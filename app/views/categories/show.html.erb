@@ -1,3 +1,16 @@
 <h1><%= @category.name %></h1>
 
 <!-- Add code here to list a category's posts. -->
+
+
+<h3><%= pluralize(@category.posts.count, 'Post') %></h3>
+<%  #Thing Ciaran mentioned - about making 'Post' plural if count > 1 %>
+
+<ul>
+  <% @category.posts.each do |p| %>
+  <% #COLLECTION PROXY STUFF - category has many posts %>
+    <li> <%= link_to p.title, post_path(p) %> </li>
+     <% # Can think of these proxies - as arrays %>
+  <% end %>
+</ul>
+<% #Listing error messages based on  %>
